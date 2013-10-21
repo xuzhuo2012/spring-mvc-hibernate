@@ -5,33 +5,42 @@ import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
+import org.springframework.stereotype.Repository;
 
 import com.xxzzsoftware.dao.UserDao;
 import com.xxzzsoftware.model.User;
 
-public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
+@Repository("userDao")
+public class UserDaoImpl implements UserDao {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
+	
+	public void setSessionFactory(SessionFactory sessionFactory) {
+		this.sessionFactory = sessionFactory;
+	}
 
 	@Override
 	public User saveUser(User user) {
 		Session session = sessionFactory.getCurrentSession();
-		return (User)session.save(user);
+		session.save(user);
+		session.flush();
+		return user;
 	}
 
 	@Override
 	public void deleteUser(User user) {
-		//this.getHibernateTemplate().delete(user);
 		Session session = sessionFactory.getCurrentSession();
-		session.delete(user);;
+		session.delete(user);
+		session.flush();
 	}
 
 	@Override
 	public User updateUser(User user) {
-		this.getHibernateTemplate().saveOrUpdate(user);
-		return null;
+		//this.getHibernateTemplate().saveOrUpdate(user);
+		Session session = sessionFactory.getCurrentSession();
+		session.saveOrUpdate(user);
+		return user;
 	}
 
 	@Override
