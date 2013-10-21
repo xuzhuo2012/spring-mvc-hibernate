@@ -6,7 +6,7 @@ import com.xxzzsoftware.model.User;
 
 public interface UserDao {
 	
-	public User addUser(User user);
+	public User saveUser(User user);
 	
 	public void deleteUser(User user);
 	

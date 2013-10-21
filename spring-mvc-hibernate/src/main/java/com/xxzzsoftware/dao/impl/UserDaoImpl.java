@@ -16,7 +16,7 @@ public class UserDaoImpl extends HibernateDaoSupport implements UserDao {
 	private SessionFactory sessionFactory;
 
 	@Override
-	public User addUser(User user) {
+	public User saveUser(User user) {
 		Session session = sessionFactory.getCurrentSession();
 		return (User)session.save(user);
 	}
