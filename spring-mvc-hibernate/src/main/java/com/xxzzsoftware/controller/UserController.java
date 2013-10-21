@@ -1,4 +1,4 @@
-package com.xxzzsoftware.myapp;
+package com.xxzzsoftware.controller;
 
 import java.util.Date;
 
