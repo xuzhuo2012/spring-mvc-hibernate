@@ -14,6 +14,13 @@
 		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
+		<junit-version>4.7</junit-version>
+		<org.hibernate-version>4.1.1.Final</org.hibernate-version>
+		<mysql-connector-version>5.1.26</mysql-connector-version>
+		<common-dbcp-version>1.4</common-dbcp-version>
+		<common-pool-version>1.6</common-pool-version>
+		<commons-collections-version>3.2</commons-collections-version>
+		<cglib-version>3.0</cglib-version>
 	</properties>
 
 	<dependencies>
@@ -57,7 +64,7 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-entitymanager</artifactId>
-			<version>4.1.1.Final</version>
+			<version>${org.hibernate-version}</version>
 			<!-- will come with Hibernate core -->
 		</dependency>
 
@@ -65,25 +72,25 @@
 		<dependency>
 			<groupId>mysql</groupId>
 			<artifactId>mysql-connector-java</artifactId>
-			<version>5.1.26</version>
+			<version>${mysql-connector-version}</version>
 		</dependency>
 
 		<!-- DBCP -->
 		<dependency>
 			<groupId>commons-dbcp</groupId>
 			<artifactId>commons-dbcp</artifactId>
-			<version>1.4</version>
+			<version>${common-dbcp-version}</version>
 		</dependency>
 		<dependency>
 			<groupId>commons-pool</groupId>
 			<artifactId>commons-pool</artifactId>
-			<version>1.6</version>
+			<version>${common-pool-version}</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>commons-collections</groupId>
 			<artifactId>commons-collections</artifactId>
-			<version>3.2</version>
+			<version>${commons-collections-version}</version>
 			<!-- Need to put this jar under %tomcat_folder%/lib -->
 		</dependency>
 
@@ -91,7 +98,7 @@
 		<dependency>
 			<groupId>cglib</groupId>
 			<artifactId>cglib</artifactId>
-			<version>3.0</version>
+			<version>${cglib-version}</version>
 		</dependency>
 
 		<!-- AspectJ -->
@@ -174,7 +181,7 @@
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
-			<version>4.7</version>
+			<version>${junit-version}</version>
 			<scope>test</scope>
 		</dependency>
 
