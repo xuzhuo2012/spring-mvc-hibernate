@@ -2,6 +2,7 @@ package com.xxzzsoftware.dao.impl;
 
 import java.util.List;
 
+import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,10 +16,6 @@ public class UserDaoImpl implements UserDao {
 	
 	@Autowired
 	private SessionFactory sessionFactory;
-	
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
 
 	@Override
 	public User saveUser(User user) {
@@ -37,7 +34,6 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public User updateUser(User user) {
-		//this.getHibernateTemplate().saveOrUpdate(user);
 		Session session = sessionFactory.getCurrentSession();
 		session.saveOrUpdate(user);
 		return user;
@@ -50,6 +46,11 @@ public class UserDaoImpl implements UserDao {
 
 	@Override
 	public List<User> findAllUser() {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("select * from User");
+		query.executeUpdate();
+		
+		
 		return null;
 	}
 
