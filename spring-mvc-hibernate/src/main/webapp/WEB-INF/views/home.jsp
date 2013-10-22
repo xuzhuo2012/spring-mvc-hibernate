@@ -8,16 +8,29 @@
 	<h1>Hello world!</h1>
 
 	<P>The time on the server is ${serverTime}.</P>
-	.
+	
 
-	<div>
+	<div id= "login_frame">
 		<form action="user/login" method="post">
-			Username:<input type="text" name="username" /><br /> Password:<input
-				type="passwrod" name="password" /><br /> <input type="submit"
-				value="login" /><br />
+			<div class="field_desc">
+				Username:
+			</div>
+			<div class="field_edit">
+				<input type="text" name="username" />
+			</div>
+			<div class="field_desc">
+				Password:
+			</div>
+			<div class="field_edit">
+				<input type="password" name="password" />
+			</div>
+			<div>
+				<input type="submit" value="login" />
+			</div>
 		</form>
 	</div>
 
 	<a href="user/register">register</a>
+
 </body>
 </html>
