@@ -18,7 +18,6 @@ public class MergeSort {
 	
 	public void mergeSort(int[] a, int p, int r){
 		
-		
 		if(p < r){
 			int q = (p+r)/2;
 			mergeSort(a,p,q);
@@ -28,36 +27,43 @@ public class MergeSort {
 		
 	}
 	
-	private void merge(int [] a, int p,int q,int r){
-		
-		int lengthL = q-p+1;
-		int lengthR = r- q;
-		
-		int[] L = new int[lengthL + 1];
-		int[] R = new int[lengthR+1];
-		
-		for(int i = 0; i < lengthL;i++){
-			L[i] = a[p+i];
-		}
-		
-		for(int i = 0 ; i < lengthR;i++){
-			R[i] = a[q+1+i];
-		}
-		
-		L[lengthL] = Integer.MAX_VALUE;
-		R[lengthR] = Integer.MAX_VALUE;
-		
-		int i = 0; 
-		int j = 0;
-		
-		for(int k = 0; k <= r ; k++){
-			if(L[i] < R[j]){
-				a[k] = L[i];
+	public static void merge(int[] a, int start, int offset, int end) {
+
+		int k = 0;
+		int i = start;
+		int j = offset;
+
+		if (end > a.length)
+			end = a.length;
+
+		if (offset > a.length)
+			offset = a.length;
+
+		int[] b = new int[end - start];
+
+		while (i < offset && j < end) {
+
+			if (a[i] < a[j]) {
+				b[k++] = a[i];
 				i++;
-			}else{
-				a[k] = R[j];
+			} else {
+				b[k++] = a[j];
 				j++;
 			}
+		}
+
+		if (i < offset) {
+			for (; i < offset; i++) {
+				b[k++] = a[i];
+			}
+		} else if (j < end) {
+			for (; j < end; j++) {
+				b[k++] = a[j];
+			}
+		}
+
+		for (k = 0, i = start; i < end; i++, k++) {
+			a[i] = b[k];
 		}
 	}
 }
